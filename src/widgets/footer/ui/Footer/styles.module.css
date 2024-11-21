@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 67px 60px;
+}
+
+ .logoLink {
+  display: inline-flex;
+  align-items: center;
+ }

@@ -26,6 +26,7 @@
   --font-main: 'Acrom', sans-serif;
   --placeholder-color: rgba(21, 21, 21, 0.28);
   --main-background-color: #080423;
+  --text-link-hover-color: #ff3d81;
 }
 
 * {
@@ -37,11 +38,16 @@
   font-family: var(--font-main);
 }
 
+html, body {
+  height: 100%;
+}
+
 .wrapper {
   background: var(--main-background-color);
 }
 
 .container {
-  padding-left: 60px;
-  padding-right: 60px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
