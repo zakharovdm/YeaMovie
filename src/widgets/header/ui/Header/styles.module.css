@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  gap: 125px;
+  padding: 20px 60px;
+}
+
+ .logoLink {
+  display: inline-flex;
+  align-items: center;
+ }

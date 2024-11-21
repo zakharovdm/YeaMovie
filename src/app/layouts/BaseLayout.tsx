@@ -1,7 +1,10 @@
+import { Header } from "@/widgets/header";
+
+
 function BaseLayout () {
   return (
     <>
-      Главная страница
+      <Header />
     </>
   )
 }
