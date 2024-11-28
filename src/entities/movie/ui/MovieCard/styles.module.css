@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.poster {
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  color: #080423;
+}
+
+.year {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(21, 21, 21, 0.28);
+}
+
+.rating {
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffd233;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.wrapper { 
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
