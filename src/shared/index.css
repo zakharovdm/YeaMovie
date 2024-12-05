@@ -26,7 +26,8 @@
   --font-main: 'Acrom', sans-serif;
   --placeholder-color: rgba(21, 21, 21, 0.28);
   --main-background-color: #080423;
-  --text-link-hover-color: #ff3d81;
+  --accent-color: #ff3d81;
+  --raiting-color: #ffd233;
 }
 
 * {

@@ -4,6 +4,7 @@ export interface Filters {
   lists: string | null;
   sortField: string | null;
   sortType: string | null;
+  query: string | null;
 }
 
 export type ParamsType = Partial<Filters>;
