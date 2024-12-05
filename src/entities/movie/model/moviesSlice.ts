@@ -1,23 +1,28 @@
 import { Movie } from './types';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface State {
-  movies: Movie[];
+  foundedMovies: Movie[] | null;
+  query: string;
 }
 
 const initialState: State = {
-  movies: []
+  foundedMovies: [],
+  query: '',
 };
 
-export const movieSlice = createSlice({
-  name: 'movies',
+export const foundedMoviesSlice = createSlice({
+  name: 'foundedMovies',
   initialState,
   reducers: {
-    setMovies: (state, action) => {
-      state.movies = action.payload;
+    setFoundedMovies: (state, action: PayloadAction<Movie[] | null>) => {
+      state.foundedMovies = action.payload;
+    },
+    setQuery: (state, action: PayloadAction<string>) => {
+      state.query = action.payload;
     },
   },
 });
 
-export const { setMovies } = movieSlice.actions;
-export default movieSlice.reducer;
+export const { setFoundedMovies, setQuery } = foundedMoviesSlice.actions;
+export default foundedMoviesSlice.reducer;

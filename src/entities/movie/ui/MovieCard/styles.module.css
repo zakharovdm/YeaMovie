@@ -24,7 +24,7 @@
 .rating {
   font-weight: 500;
   font-size: 18px;
-  color: #ffd233;
+  color: var(--raiting-color);
 }
 
 .info {

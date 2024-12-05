@@ -16,5 +16,5 @@
 }
 
 .link:hover {
-  color: var(--text-link-hover-color);
+  color: var(--accent-color);
 }

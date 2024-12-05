@@ -30,7 +30,20 @@ export const moviesApi = createApi({
         };
       },
     }),
+    getMovieByTitle: builder.query<MoviesApiResponse, ParamsType>({
+      query: (params) => {
+        const { page, limit, query } = params || {};
+        return {
+          url: 'movie/search',
+          params: {
+            page,
+            limit,
+            query
+          }
+        }
+      }
+    })
   }),
 });
 
-export const { useGetMoviesQuery } = moviesApi;
+export const { useGetMoviesQuery, useGetMovieByTitleQuery } = moviesApi;

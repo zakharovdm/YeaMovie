@@ -20,6 +20,7 @@ export interface Movie {
   }
   rating: {
     kp: number;
+    imdb: number;
   } 
 }
 

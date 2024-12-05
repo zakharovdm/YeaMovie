@@ -1,12 +1,10 @@
 import { moviesApi } from '@/entities/movie';
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux';
+import { rootReducer } from './appReducer';
 
 export const store = configureStore({
-  reducer: {
-    [moviesApi.reducerPath]: moviesApi.reducer,
-  },
-
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(moviesApi.middleware),
 })
