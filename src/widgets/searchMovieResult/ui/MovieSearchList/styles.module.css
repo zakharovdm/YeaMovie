@@ -1,0 +1,7 @@
+.list {
+  display: grid;
+  grid-auto-rows: minmax(573px, 1fr);
+  gap: 50px;
+  padding-top: 72px;
+  padding-bottom: 180px;
+}
