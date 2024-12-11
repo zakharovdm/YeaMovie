@@ -1,7 +1,7 @@
 import styles from './Image.module.css';
 
 interface Props {
-  image: string;
+  image?: string;
   alt: string;
   className: string;
 }
