@@ -1,4 +1,5 @@
 export interface Filters {
+  id: number | null;
   page: number | null;
   limit: number | null;
   lists: string | null;

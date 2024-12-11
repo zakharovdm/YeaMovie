@@ -42,8 +42,19 @@ export const moviesApi = createApi({
           }
         }
       }
+    }),
+    getMovieById: builder.query<MoviesApiResponse, ParamsType>({
+      query: (params) => {
+        const { id } = params || {};
+        return {
+          url: `movie/${id}`,
+          params: {
+            id,
+          }
+        }
+      }
     })
   }),
 });
 
-export const { useGetMoviesQuery, useGetMovieByTitleQuery } = moviesApi;
+export const { useGetMoviesQuery, useGetMovieByTitleQuery, useGetMovieByIdQuery } = moviesApi;

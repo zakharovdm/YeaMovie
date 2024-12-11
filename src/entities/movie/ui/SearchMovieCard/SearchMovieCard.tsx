@@ -29,7 +29,7 @@ const SearchMovieCard = ({ item }: Props) => {
             </p>
           </div>
         </div>
-        <p className={styles.description}>{item.description}</p>
+        <p className={styles.description}>{item.shortDescription}</p>
         <ul className={styles.aboutMovie}>
           <li>
             <p>Жанр:</p>
