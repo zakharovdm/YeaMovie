@@ -1,4 +1,4 @@
-import { SearchMovie } from '@/features/movie/search-movie';
+import { SearchMovie } from '@/features/search-movie';
 import Logo from '@/shared/ui/Logo/Logo';
 import styles from './styles.module.css';
 
