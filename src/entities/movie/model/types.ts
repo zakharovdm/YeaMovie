@@ -38,10 +38,11 @@ export interface Movie {
   }
   watchability: {
     items: Streaming[]
-  } 
+  }
 }
 
 export interface MoviesApiResponse extends Movie {
   docs: Movie[];
   status: string;
+  pages: number;
 }
