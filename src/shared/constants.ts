@@ -1,3 +1,4 @@
 export const START_PAGE_NUMBER = 1;
 export const MOVIES_LIMIT_PREVIEW_POPULAR_PAGE = 12;
 export const MOVIES_LIMIT_SEARCH_PAGE = 3;
+export const MOVIES_LIMIT_PREVIEW_FILTER = 6

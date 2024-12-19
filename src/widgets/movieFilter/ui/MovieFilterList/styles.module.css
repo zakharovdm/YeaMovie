@@ -1,0 +1,25 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 60px;
+  padding: 10px 6px;
+  width: 283px;
+  height: 44px;
+  background: #080423;
+}
+
+.list {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+}
