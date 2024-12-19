@@ -27,7 +27,7 @@ const MovieSearchList = () => {
   const handlePageClick = (page: number) => setSearchParams({ page: String(page) });
 
   return (
-    <div className={styles.wrapper}>
+    <section>
       <ul className={styles.list}>
         {data?.docs.map((movie: Movie) => (
           <Link to={`/details/${movie.id}`} key={movie.id}>
@@ -42,7 +42,7 @@ const MovieSearchList = () => {
         handlePrevPage={handlePrevPage}
         currentPage={page}
         />
-    </div>
+    </section>
   );
 };
 

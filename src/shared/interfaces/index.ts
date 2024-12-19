@@ -6,6 +6,10 @@ export interface Filters {
   sortField: string | null;
   sortType: string | null;
   query: string | null;
+  year: string | null;
+  'genres.name': string | null;
+  'countries.name': string | null;
+  'rating.kp': string | null;
 }
 
 export type ParamsType = Partial<Filters>;
