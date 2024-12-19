@@ -17,15 +17,29 @@ export const moviesApi = createApi({
   endpoints: (builder) => ({
     getMovies: builder.query<MoviesApiResponse, ParamsType>({
       query: (params) => {
-        const { page, limit, lists, sortField, sortType } = params || {};
+        const {
+          page,
+          limit,
+          lists,
+          sortField,
+          sortType,
+          year,
+          'genres.name': genresName,
+          'countries.name': country,
+          'rating.kp': rating,
+        } = params || {};
         return {
-          url: 'movie',
+          url: 'v1.4/movie',
           params: {
             page,
             limit,
             lists,
             sortField,
             sortType,
+            year,
+            'genres.name': genresName,
+            'countries.name': country,
+            'rating.kp': rating,
           },
         };
       },
@@ -34,27 +48,31 @@ export const moviesApi = createApi({
       query: (params) => {
         const { page, limit, query } = params || {};
         return {
-          url: 'movie/search',
+          url: 'v1.4/movie/search',
           params: {
             page,
             limit,
-            query
-          }
-        }
-      }
+            query,
+          },
+        };
+      },
     }),
     getMovieById: builder.query<MoviesApiResponse, ParamsType>({
       query: (params) => {
         const { id } = params || {};
         return {
-          url: `movie/${id}`,
+          url: `v1.4/movie/${id}`,
           params: {
             id,
-          }
-        }
-      }
-    })
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetMovieByTitleQuery, useGetMovieByIdQuery } = moviesApi;
+export const {
+  useGetMoviesQuery,
+  useGetMovieByTitleQuery,
+  useGetMovieByIdQuery,
+} = moviesApi;

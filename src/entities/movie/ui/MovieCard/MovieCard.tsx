@@ -13,7 +13,7 @@ const MovieCard = ({ item }: Props) => {
     <li className={styles.card}>
       <Image
         className={styles.poster}
-        image={item.poster.url}
+        image={item.poster?.url}
         alt="Постер фильма"
       />
       <div className={styles.info}>

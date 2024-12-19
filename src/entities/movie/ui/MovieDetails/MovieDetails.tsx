@@ -10,7 +10,7 @@ const MovieDetails = () => {
 
   const ratingKp = Math.round(data?.rating.kp ?? 0);
   const ratingIMDb = Math.round(data?.rating.imdb ?? 0);
-  const streaming = data?.watchability.items;
+  const streaming = data?.watchability?.items;
 
   return (
     <>
@@ -18,7 +18,7 @@ const MovieDetails = () => {
         <div className={styles.leftBlock}>
           <Image
             className={styles.poster}
-            image={data?.poster.url}
+            image={data?.poster?.url}
             alt="Постер фильма"
           />
           <div>
