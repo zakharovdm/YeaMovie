@@ -1,23 +1,23 @@
 type Genre = {
   name: string;
-}
+};
 
 type Country = {
   name: string;
-}
+};
 
 type Persons = {
   name: string;
   enProfession: string;
-}
+};
 
 type Streaming = {
-  name: string,
+  name: string;
   logo: {
-    url: string,
-  }
-  url: string
-}
+    url: string;
+  };
+  url: string;
+};
 
 export interface Movie {
   id: number;
@@ -31,14 +31,18 @@ export interface Movie {
   actors: string[];
   poster: {
     url: string;
-  }
+  };
   rating: {
     kp: number;
     imdb: number;
-  }
+  };
   watchability: {
-    items: Streaming[]
-  }
+    items: Streaming[];
+  };
+  backdrop: {
+    url: string;
+  };
+  status: string;
 }
 
 export interface MoviesApiResponse extends Movie {

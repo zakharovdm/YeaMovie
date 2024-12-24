@@ -1,5 +1,4 @@
 .main {
-  display: flex;
+  display: grid;
   gap: 100px;
-  flex-direction: column;
 }

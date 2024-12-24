@@ -27,6 +27,8 @@ export const moviesApi = createApi({
           'genres.name': genresName,
           'countries.name': country,
           'rating.kp': rating,
+          notNullFields,
+          'releaseYears.start': startYear
         } = params || {};
         return {
           url: 'v1.4/movie',
@@ -40,6 +42,8 @@ export const moviesApi = createApi({
             'genres.name': genresName,
             'countries.name': country,
             'rating.kp': rating,
+            'releaseYears.start': startYear,
+            notNullFields,
           },
         };
       },
