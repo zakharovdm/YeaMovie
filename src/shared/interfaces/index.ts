@@ -10,6 +10,9 @@ export interface Filters {
   'genres.name': string | null;
   'countries.name': string | null;
   'rating.kp': string | null;
+  'releaseYears.start': string | null;
+  notNullFields: string | null;
+  status: string | null;
 }
 
 export type ParamsType = Partial<Filters>;
