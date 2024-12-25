@@ -8,7 +8,7 @@ type Props = {
 
 const SimilarMovies = ({ data }: Props) => {
   console.log( 
-    'проверка сборки'
+    'проверка сборки 2'
   )
   return (
     <>
