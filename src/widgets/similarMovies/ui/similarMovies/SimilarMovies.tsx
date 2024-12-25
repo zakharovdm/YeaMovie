@@ -7,6 +7,9 @@ type Props = {
 }
 
 const SimilarMovies = ({ data }: Props) => {
+  console.log( 
+    'проверка сборки'
+  )
   return (
     <>
       <h3 className={styles.title}>Возможно, вам понравится</h3>
