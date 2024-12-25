@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
 const Navigation = () => {
@@ -5,9 +6,9 @@ const Navigation = () => {
     <nav className={styles.navigation}>
       <ul className={styles.list}>
         <li>
-          <a className={styles.link} href="#">
+          <Link to="/" className={styles.link}>
             Главная
-          </a>
+          </Link>
         </li>
         <li>
           <a className={styles.link} href="#">
