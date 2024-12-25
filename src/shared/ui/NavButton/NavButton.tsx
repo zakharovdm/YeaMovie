@@ -12,10 +12,8 @@ const NavButton = ({title}: Props) => {
   const handleClick = () => {
     if (title === 'Назад') { 
       navigate(-1);
-      console.log('или назад')
     } else {
       navigate('/');
-      console.log('возврат на главную')
     }
   }
 

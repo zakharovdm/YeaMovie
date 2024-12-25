@@ -56,7 +56,7 @@ const Slider = () => {
         <SwiperSlide key={`${slide.id} - ${index + 1}`} className={styles.slide}>
           <div className={styles.overlay}></div>
           <Image className={styles.poster} image={slide.backdrop?.url} alt="Постер фильма" />
-          <Link to={`/details/${slide.id}`} target='_blank' rel="noopener noreferrer">
+          <Link to={`/details/${slide.id}`}>
             <h3 className={styles.title}>{slide.name}</h3>
           </Link>
         </SwiperSlide>
