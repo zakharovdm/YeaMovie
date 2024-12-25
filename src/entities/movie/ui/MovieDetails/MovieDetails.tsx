@@ -2,6 +2,7 @@ import Image from '@/shared/ui/Image/Image';
 import styles from './styles.module.css';
 import { useParams } from 'react-router-dom';
 import { useGetMovieByIdQuery } from '../../api/moviesApi';
+import { SimilarMovies } from '@/widgets/similarMovies';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -112,6 +113,7 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
+      <SimilarMovies data={data?.similarMovies || []}/>
     </>
   );
 };
