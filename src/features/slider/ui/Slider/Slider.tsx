@@ -4,7 +4,8 @@ import { START_PAGE_NUMBER } from '@/shared/constants';
 import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { useEffect, useState } from 'react';
 
-import Image from '@/shared/ui/Image/Image'; import 'swiper/css';
+import Image from '@/shared/ui/Image/Image'; 
+import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
