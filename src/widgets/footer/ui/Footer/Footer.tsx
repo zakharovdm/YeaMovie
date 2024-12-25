@@ -1,13 +1,14 @@
 import Logo from '@/shared/ui/Logo/Logo';
 import styles from './styles.module.css';
 import { Navigation } from '@/widgets/navigation';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className={`${styles.footer} wrapper`}>
-      <a className={styles.logoLink} href="#">
+      <Link to="/" className={styles.logoLink}>
         <Logo />
-      </a>
+      </Link>
       <Navigation />
     </footer>
   );

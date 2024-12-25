@@ -1,0 +1,10 @@
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.navigation {
+  display: flex;
+  gap: 80px;
+}
