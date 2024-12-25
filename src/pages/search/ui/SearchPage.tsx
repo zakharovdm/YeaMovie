@@ -1,16 +1,13 @@
 import { MovieSearchList } from '@/widgets/searchMovieResult';
-import arrowIcon from '@/shared/assets/icons/arrow-icon.svg';
 import styles from './styles.module.css';
+import NavButton from '@/shared/ui/NavButton/NavButton';
 
 const SearchPage = () => {
   return (
     <main className="content-wrapper">
       <div className={styles.inner}>
         <div className={styles.innerButton}>
-          <button className={styles.buttonBack}>
-            <img src={arrowIcon} alt="Иконка стрелка назад" />
-            Назад
-          </button>
+          <NavButton title={'Назад'} />
         </div>
         <div className={styles.innerTitle}>
           <h1 className={styles.title}>Результаты поиска</h1>

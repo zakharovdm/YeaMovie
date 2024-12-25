@@ -24,7 +24,7 @@ const Slider = () => {
     limit: 10,
     notNullFields: 'backdrop.url',
     sortField: 'rating.kp',
-    sortType: '1',
+    sortType: '-1',
     'releaseYears.start': year,
   });
 
