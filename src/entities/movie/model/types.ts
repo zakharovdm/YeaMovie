@@ -42,11 +42,10 @@ export interface Movie {
   backdrop: {
     url: string;
   };
-  status: string;
+  similarMovies: Movie[];
 }
 
 export interface MoviesApiResponse extends Movie {
   docs: Movie[];
-  status: string;
   pages: number;
 }
