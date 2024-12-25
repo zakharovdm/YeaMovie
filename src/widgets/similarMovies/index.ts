@@ -1,3 +1,3 @@
-import SimilarMovies from './ui/SimilarMovies/SimilarMovies';
+import SimilarMovies from './ui/similarMovies/SimilarMovies';
 
 export { SimilarMovies };
