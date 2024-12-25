@@ -1,3 +1,3 @@
-import MovieList from './ui/MovieList/MovieList';
+import Recommendations from './ui/Recommendations/Recommendations';
 
-export { MovieList };
+export { Recommendations };

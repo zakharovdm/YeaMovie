@@ -1,0 +1,31 @@
+.buttons {
+  display: flex;
+  gap: 50px;
+}
+
+.button {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: #222121;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 11px 30px;
+  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.active {
+  background: var(--main-background-color);
+  color: #FFFFFF;
+  border-radius: 60px;
+  pointer-events: none;
+}
+
+.button:hover {
+  background: var(--main-background-color);
+  color: #FFFFFF;
+  border-radius: 60px;
+  padding: 11px 30px;
+  opacity: 0.8;
+}
