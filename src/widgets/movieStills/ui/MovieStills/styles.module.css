@@ -1,0 +1,17 @@
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 60px;
+  padding: 10px 6px;
+  width: 283px;
+  height: 44px;
+  background: #080423;
+}
