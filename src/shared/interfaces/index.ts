@@ -12,7 +12,8 @@ export interface Filters {
   'rating.kp': string | null;
   'releaseYears.start': string | null;
   notNullFields: string | null;
-  status: string | null;
+  movieId: string | null;
+  type: string | null;
 }
 
 export type ParamsType = Partial<Filters>;
