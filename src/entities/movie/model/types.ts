@@ -19,6 +19,12 @@ type Streaming = {
   url: string;
 };
 
+export interface ImageMovie {
+  url: string;
+  type: string;
+  id: string;
+}
+
 export interface Movie {
   id: number;
   name: string;
@@ -48,4 +54,10 @@ export interface Movie {
 export interface MoviesApiResponse extends Movie {
   docs: Movie[];
   pages: number;
+}
+
+export interface ImageMovieApiResponse {
+  docs: ImageMovie[];
+  pages: number;
+  limit: number
 }

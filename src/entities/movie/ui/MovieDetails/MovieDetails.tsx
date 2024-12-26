@@ -1,14 +1,12 @@
 import Image from '@/shared/ui/Image/Image';
 import styles from './styles.module.css';
-import { useParams } from 'react-router-dom';
-import { useGetMovieByIdQuery } from '../../api/moviesApi';
-import { SimilarMovies } from '@/widgets/similarMovies';
+import { Movie } from '../../model/types';
 
-const MovieDetails = () => {
-  const { id } = useParams();
-  const movieId = id ? parseInt(id) : null;
-  const { data } = useGetMovieByIdQuery({ id: movieId });
+type Props = {
+  data: Movie;
+}
 
+const MovieDetails = ({data}: Props) => {
   const ratingKp = Math.round(data?.rating.kp ?? 0);
   const ratingIMDb = Math.round(data?.rating.imdb ?? 0);
   const streaming = data?.watchability?.items;
@@ -113,7 +111,6 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      <SimilarMovies data={data?.similarMovies || []}/>
     </>
   );
 };

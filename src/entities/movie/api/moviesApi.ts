@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { MoviesApiResponse } from '../model/types';
+import { ImageMovieApiResponse, MoviesApiResponse } from '../model/types';
 import { ParamsType } from '@/shared/interfaces';
 
 const BASE_URL = import.meta.env.VITE_MOVIES_BASE_URL;
@@ -72,6 +72,20 @@ export const moviesApi = createApi({
         };
       },
     }),
+    getImagesFromMovie: builder.query<ImageMovieApiResponse, ParamsType>({
+      query: (params) => {
+        const { page, limit, movieId, type } = params || {};
+        return {
+          url: 'v1.4/image',
+          params: {
+            page,
+            limit,
+            movieId,
+            type
+          }
+        }
+      }
+    })
   }),
 });
 
@@ -79,4 +93,5 @@ export const {
   useGetMoviesQuery,
   useGetMovieByTitleQuery,
   useGetMovieByIdQuery,
+  useGetImagesFromMovieQuery
 } = moviesApi;
