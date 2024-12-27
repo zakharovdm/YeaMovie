@@ -1,0 +1,18 @@
+.swiperSlide {
+  display: flex;
+  justify-content: center;
+}
+
+.swiper {
+  height: 500px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.swiperSlide2 {
+  opacity: 0.4;
+}
+
+:global(.swiper-slide-thumb-active) {
+  opacity: 1;
+}
