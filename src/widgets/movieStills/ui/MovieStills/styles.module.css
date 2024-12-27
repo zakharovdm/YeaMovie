@@ -5,7 +5,7 @@
 
 .title {
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   font-weight: 500;
   font-size: 18px;
   color: #fff;
@@ -14,4 +14,9 @@
   width: 283px;
   height: 44px;
   background: #080423;
+}
+
+.innerButton {
+  display: flex;
+  justify-content: end;
 }
