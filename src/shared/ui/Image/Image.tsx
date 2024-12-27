@@ -3,7 +3,7 @@ import styles from './Image.module.css';
 interface Props {
   image?: string;
   alt: string;
-  className: string;
+  className?: string;
 }
 
 const Image = ({ image, alt, className }: Props) => {

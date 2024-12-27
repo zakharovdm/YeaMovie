@@ -4,7 +4,7 @@
 }
 
 .button {
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   font-weight: 400;
   font-size: 18px;
   color: #222121;
