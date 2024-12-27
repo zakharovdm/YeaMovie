@@ -3,9 +3,12 @@ import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { MOVIES_LIMIT_PREVIEW_POPULAR_PAGE, START_PAGE_NUMBER } from '@/shared/constants';
 import { useState } from 'react';
 import styles from './styles.module.css';
+import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
+import { useNavigate } from 'react-router-dom';
 
 const Recommendations = () => {
   const [activeCategory, setActiveCategory] = useState('movies');
+  const navigate = useNavigate();
 
   const { data } = useGetMoviesQuery({
     page: START_PAGE_NUMBER,
@@ -16,7 +19,7 @@ const Recommendations = () => {
   });
 
   return (
-    <>
+    <section className={styles.recommendations}>
       <div className={styles.buttons}>
         <button
           className={`${styles.button} ${activeCategory === 'movies' ? styles.active : ''}`}
@@ -30,8 +33,11 @@ const Recommendations = () => {
           Популярные сериалы
         </button>
       </div>
+      <div className={styles.innerButton}>
+        <ButtonViewAll onClick={() => navigate(`/view-all/${activeCategory}`)} />
+      </div>
       {data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
-    </>
+    </section>
 
 
   );

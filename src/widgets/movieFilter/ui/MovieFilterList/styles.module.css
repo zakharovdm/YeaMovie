@@ -23,3 +23,14 @@
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
 }
+
+.innerButton {
+  display: flex;
+  justify-content: end;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

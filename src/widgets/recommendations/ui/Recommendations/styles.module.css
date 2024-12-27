@@ -1,3 +1,9 @@
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .buttons {
   display: flex;
   gap: 50px;
@@ -28,4 +34,9 @@
   border-radius: 60px;
   padding: 11px 30px;
   opacity: 0.8;
+}
+
+.innerButton {
+  display: flex;
+  justify-content: end;
 }
