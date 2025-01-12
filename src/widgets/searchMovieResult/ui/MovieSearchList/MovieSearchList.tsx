@@ -8,13 +8,14 @@ import styles from './styles.module.css';
 import { useAppSelector } from '@/app/appStore';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/features/pagination';
+import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
 
 const MovieSearchList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page') || START_PAGE_NUMBER);
   const query = useAppSelector((state) => state.foundedMovies.query);
 
-  const { data } = useGetMovieByTitleQuery({
+  const { data, isLoading, error } = useGetMovieByTitleQuery({
     page,
     limit: MOVIES_LIMIT_SEARCH_PAGE,
     query: query,
@@ -29,7 +30,9 @@ const MovieSearchList = () => {
   return (
     <section>
       <ul className={styles.list}>
-        {data?.docs.map((movie: Movie) => (
+        {isLoading ? (<p>Загрузка...</p>) 
+        : error ? (<ErrorMessage error={error} />) 
+        : data?.docs.map((movie: Movie) => (
           <Link to={`/details/${movie.id}`} key={movie.id}>
             <SearchMovieCard item={movie} />
           </Link>
@@ -41,7 +44,7 @@ const MovieSearchList = () => {
         handlePageClick={handlePageClick}
         handlePrevPage={handlePrevPage}
         currentPage={page}
-        />
+      />
     </section>
   );
 };
