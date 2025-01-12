@@ -5,12 +5,13 @@ import { SimilarMovies } from "@/widgets/similarMovies";
 import { MovieStills } from "@/widgets/movieStills";
 import { useGetMovieByIdQuery } from "@/entities/movie/api/moviesApi";
 import styles from './styles.module.css';
+import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
 
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
   const movieId = id ? parseInt(id) : null;
-  const { data } = useGetMovieByIdQuery({ id: movieId });
+  const { data, isLoading, error } = useGetMovieByIdQuery({ id: movieId });
 
   return (
     <main className="content-wrapper">
@@ -19,7 +20,9 @@ const MovieDetailsPage = () => {
           <NavButton title={'Главная'} />
           <NavButton title={'Назад'} />
         </nav>
-        {data ? (
+        {isLoading ? <p>Загрузка...</p> 
+        : error ? <ErrorMessage error={error} /> 
+        : data ? (
           <>
             <MovieDetails data={data} />
             <MovieStills movieId={data.id.toString()} />

@@ -6,6 +6,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import styles from './styles.module.css';
 import { useAppSelector } from "@/app/appStore";
 import NavButton from "@/shared/ui/NavButton/NavButton";
+import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
 
 const ViewAllPage = () => {
   const { category } = useParams();
@@ -44,8 +45,7 @@ const ViewAllPage = () => {
       break
   }
 
-
-  const { data } = useGetMoviesQuery({
+  const { data, error, isLoading } = useGetMoviesQuery({
     page,
     limit: 18,
     ...moviesParams,
@@ -64,7 +64,9 @@ const ViewAllPage = () => {
       <div>
         <NavButton title={'Назад'} />
       </div>
-      {data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
+      {isLoading ? (<p>Загрузка...</p>) 
+      : error ? (<ErrorMessage error={error} />) 
+      : data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
       <Pagination
         totalPages={totalPages}
         handleNextPage={handleNextPage}
