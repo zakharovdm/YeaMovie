@@ -6,6 +6,7 @@ import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import Modal from '@/shared/ui/Modal/Modal';
 import styles from './styles.module.css';
 import { GallerySlider } from '@/features/gallery';
+import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
 
 type Props = {
   movieId: string
@@ -16,7 +17,7 @@ const MovieStills = ({ movieId }: Props) => {
 
   const openGallery = () => setIsGalleryOpen(true);
   const closeGallery = () => setIsGalleryOpen(false);
-  const { data } = useGetImagesFromMovieQuery({ page: START_PAGE_NUMBER, limit: 250, type: 'still', movieId });
+  const { data, isLoading, error } = useGetImagesFromMovieQuery({ page: START_PAGE_NUMBER, limit: 250, type: 'still', movieId });
 
   return <>
     <div className={styles.inner}>
@@ -25,7 +26,9 @@ const MovieStills = ({ movieId }: Props) => {
     <div className={styles.innerButton}>
       <ButtonViewAll onClick={openGallery} />
     </div>
-    {data ?
+    {isLoading ? <p>Загрузка...</p> 
+    : error ? <ErrorMessage error={error} /> 
+    : data ?
       (<>
       <ImageList images={data.docs.slice(0, 6)} />
       <Modal isOpen={isGalleryOpen} onClose={closeGallery}>

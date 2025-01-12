@@ -4,11 +4,12 @@ import { MainPage } from '@/pages/main';
 import { SearchPage } from '@/pages/search';
 import { MovieDetailsPage } from '@/pages/details';
 import { ViewAllPage } from '@/pages/viewAll';
+import { ErrorPage } from '@/pages/error';
 
 export const appRouter = createBrowserRouter([
   {
     element: <BaseLayout />,
-    errorElement: <div>404</div>,
+    errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <MainPage /> },
       { path: '/search-result', element: <SearchPage /> },

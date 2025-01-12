@@ -6,12 +6,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Filter } from '@/features/filter';
 import { useAppSelector } from '@/app/appStore';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
+import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
 
 const MovieFilterList = () => {
-  const {year, genres, country, rating} = useAppSelector((state) => state.foundedMovies.filters);
+  const { year, genres, country, rating } = useAppSelector((state) => state.foundedMovies.filters);
   const navigate = useNavigate();
 
-  const { data } = useGetMoviesQuery({
+  const { data, isLoading, error } = useGetMoviesQuery({
     page: START_PAGE_NUMBER,
     limit: MOVIES_LIMIT_PREVIEW_FILTER,
     year,
@@ -19,7 +20,7 @@ const MovieFilterList = () => {
     'countries.name': country,
     'rating.kp': rating,
   });
-  
+
 
   return (
     <section className={styles.filter}>
@@ -31,7 +32,7 @@ const MovieFilterList = () => {
         </div>
       </div>
       <ul className={styles.list}>
-        {data?.docs.map((movie: Movie) => (
+        {isLoading ? (<p>Загрузка...</p>) : error ? (<ErrorMessage error={error} />) : data?.docs.map((movie: Movie) => (
           <Link to={`/details/${movie.id}`} key={movie.id}>
             <MovieCard item={movie} />
           </Link>

@@ -5,12 +5,13 @@ import { useState } from 'react';
 import styles from './styles.module.css';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import { useNavigate } from 'react-router-dom';
+import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
 
 const Recommendations = () => {
   const [activeCategory, setActiveCategory] = useState('movies');
   const navigate = useNavigate();
 
-  const { data } = useGetMoviesQuery({
+  const { data, isLoading, error } = useGetMoviesQuery({
     page: START_PAGE_NUMBER,
     limit: MOVIES_LIMIT_PREVIEW_POPULAR_PAGE,
     lists: activeCategory === 'movies' ? "top250" : "series-top250",
@@ -36,7 +37,7 @@ const Recommendations = () => {
       <div className={styles.innerButton}>
         <ButtonViewAll onClick={() => navigate(`/view-all/${activeCategory}`)} />
       </div>
-      {data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
+      {isLoading ? (<p>Загрузка...</p>) : error ? (<ErrorMessage error={error} />) : data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
     </section>
 
 
