@@ -9,6 +9,7 @@ import { useAppSelector } from '@/app/appStore';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/features/pagination';
 import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
+import Loader from '@/shared/ui/Loader/Loader';
 
 const MovieSearchList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,7 +31,7 @@ const MovieSearchList = () => {
   return (
     <section>
       <ul className={styles.list}>
-        {isLoading ? (<p>Загрузка...</p>) 
+        {isLoading ? <Loader />
         : error ? (<ErrorMessage error={error} />) 
         : data?.docs.map((movie: Movie) => (
           <Link to={`/details/${movie.id}`} key={movie.id}>

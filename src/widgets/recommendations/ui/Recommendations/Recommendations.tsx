@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
+import Loader from '@/shared/ui/Loader/Loader';
 
 const Recommendations = () => {
   const [activeCategory, setActiveCategory] = useState('movies');
@@ -37,7 +38,7 @@ const Recommendations = () => {
       <div className={styles.innerButton}>
         <ButtonViewAll onClick={() => navigate(`/view-all/${activeCategory}`)} />
       </div>
-      {isLoading ? (<p>Загрузка...</p>) : error ? (<ErrorMessage error={error} />) : data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
+      {isLoading ? <Loader /> : error ? (<ErrorMessage error={error} />) : data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
     </section>
 
 

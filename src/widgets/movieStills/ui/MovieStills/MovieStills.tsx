@@ -7,6 +7,7 @@ import Modal from '@/shared/ui/Modal/Modal';
 import styles from './styles.module.css';
 import { GallerySlider } from '@/features/gallery';
 import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
+import Loader from '@/shared/ui/Loader/Loader';
 
 type Props = {
   movieId: string
@@ -26,7 +27,7 @@ const MovieStills = ({ movieId }: Props) => {
     <div className={styles.innerButton}>
       <ButtonViewAll onClick={openGallery} />
     </div>
-    {isLoading ? <p>Загрузка...</p> 
+    {isLoading ? <Loader />
     : error ? <ErrorMessage error={error} /> 
     : data ?
       (<>

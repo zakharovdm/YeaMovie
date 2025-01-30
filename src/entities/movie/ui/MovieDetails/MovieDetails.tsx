@@ -6,7 +6,7 @@ type Props = {
   data: Movie;
 }
 
-const MovieDetails = ({data}: Props) => {
+const MovieDetails = ({ data }: Props) => {
   const ratingKp = Math.round(data?.rating.kp ?? 0);
   const ratingIMDb = Math.round(data?.rating.imdb ?? 0);
   const streaming = data?.watchability?.items;
