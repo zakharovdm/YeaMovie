@@ -7,6 +7,7 @@ import { Filter } from '@/features/filter';
 import { useAppSelector } from '@/app/appStore';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
+import Loader from '@/shared/ui/Loader/Loader';
 
 const MovieFilterList = () => {
   const { year, genres, country, rating } = useAppSelector((state) => state.foundedMovies.filters);
@@ -32,7 +33,7 @@ const MovieFilterList = () => {
         </div>
       </div>
       <ul className={styles.list}>
-        {isLoading ? (<p>Загрузка...</p>) : error ? (<ErrorMessage error={error} />) : data?.docs.map((movie: Movie) => (
+        {isLoading ? <Loader /> : error ? (<ErrorMessage error={error} />) : data?.docs.map((movie: Movie) => (
           <Link to={`/details/${movie.id}`} key={movie.id}>
             <MovieCard item={movie} />
           </Link>
