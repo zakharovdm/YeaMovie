@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 import { useAppSelector } from "@/app/appStore";
 import NavButton from "@/shared/ui/NavButton/NavButton";
 import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
+import Loader from "@/shared/ui/Loader/Loader";
 
 const ViewAllPage = () => {
   const { category } = useParams();
@@ -64,7 +65,7 @@ const ViewAllPage = () => {
       <div>
         <NavButton title={'Назад'} />
       </div>
-      {isLoading ? (<p>Загрузка...</p>) 
+      {isLoading ? <Loader />
       : error ? (<ErrorMessage error={error} />) 
       : data?.docs ? <MovieList movies={data?.docs} /> : <div>Нет доступных фильмов</div>}
       <Pagination

@@ -3,6 +3,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { START_PAGE_NUMBER } from '@/shared/constants';
 import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { useEffect, useState } from 'react';
+import Loader from '@/shared/ui/Loader/Loader';
 
 import Image from '@/shared/ui/Image/Image';
 import 'swiper/css';
@@ -13,7 +14,6 @@ import styles from './styles.module.css';
 import { Movie } from '@/entities/movie';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
-
 
 const Slider = () => {
   const date = new Date();
@@ -44,7 +44,7 @@ const Slider = () => {
 
   return (
     <>
-      {isLoading ? (<p>Загрузка...</p>)
+      {isLoading ? <Loader />
         : error ? (<ErrorMessage error={error} />)
           : <Swiper
             modules={[Autoplay, Navigation, Pagination]}

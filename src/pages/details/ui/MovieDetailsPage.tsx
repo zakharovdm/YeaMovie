@@ -6,6 +6,7 @@ import { MovieStills } from "@/widgets/movieStills";
 import { useGetMovieByIdQuery } from "@/entities/movie/api/moviesApi";
 import styles from './styles.module.css';
 import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
+import Loader from "@/shared/ui/Loader/Loader";
 
 
 const MovieDetailsPage = () => {
@@ -20,7 +21,7 @@ const MovieDetailsPage = () => {
           <NavButton title={'Главная'} />
           <NavButton title={'Назад'} />
         </nav>
-        {isLoading ? <p>Загрузка...</p> 
+        {isLoading ? <Loader />
         : error ? <ErrorMessage error={error} /> 
         : data ? (
           <>
