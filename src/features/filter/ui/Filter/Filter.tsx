@@ -1,5 +1,5 @@
 import { foundedMoviesSlice } from '@/entities/movie/model/moviesSlice';
-import { Option, useGetFilterQuery } from '../../api/filterApi';
+import { Option, useGetFilterQuery } from '@/entities/movie/api/filterApi';
 import { useAppDispatch } from '@/app/appStore';
 import styles from './styles.module.css';
 
