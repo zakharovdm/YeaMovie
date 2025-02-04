@@ -24,9 +24,7 @@ const ViewAllPage = () => {
   const totalPages = data?.pages || 1;
 
   useEffect(() => {
-    if (totalPages) {
-      syncTotalPages(totalPages);
-    }
+    syncTotalPages(totalPages);
   }, [totalPages]);
 
   return (
