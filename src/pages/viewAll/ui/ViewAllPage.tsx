@@ -4,54 +4,22 @@ import { START_PAGE_NUMBER } from "@/shared/constants";
 import MovieList from "@/widgets/recommendations/ui/MovieList/MovieList";
 import { useParams, useSearchParams } from "react-router-dom";
 import styles from './styles.module.css';
-import { useAppSelector } from "@/app/appStore";
 import NavButton from "@/shared/ui/NavButton/NavButton";
 import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
 import Loader from "@/shared/ui/Loader/Loader";
+import { useParamsByCategory } from "@/shared/hooks/useParamsByCategory";
 
 const ViewAllPage = () => {
-  const { category } = useParams();
+  const { category = 'movies' } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { year, genres, country, rating } = useAppSelector((state) => state.foundedMovies.filters);
   const page = Number(searchParams.get('page') || START_PAGE_NUMBER);
-  let moviesParams = {};
-  let seriesParams = {}
 
-  let filterParams = {}
-
-  switch (category) {
-    case 'movies':
-      moviesParams = {
-        lists: "top250",
-        sortField: "year",
-        sortType: "-1",
-      };
-      break
-    case 'series':
-      seriesParams = {
-        lists: "series-top250",
-        sortField: "year",
-        sortType: "-1",
-      };
-      break
-    case 'filtered':
-      filterParams = {
-        year,
-        'genres.name': genres,
-        'countries.name': country,
-        'rating.kp': rating,
-      };
-      break
-    default:
-      break
-  }
+  const params = useParamsByCategory(category);
 
   const { data, error, isLoading } = useGetMoviesQuery({
     page,
     limit: 18,
-    ...moviesParams,
-    ...seriesParams,
-    ...filterParams,
+    ...params
   });
 
   const totalPages = data?.pages || 1;
