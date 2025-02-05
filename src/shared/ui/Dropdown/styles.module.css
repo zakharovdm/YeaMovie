@@ -1,0 +1,37 @@
+.select {
+  border: 1px solid rgba(21, 21, 21, 0.28);
+  border-radius: 60px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #7a7a7a;
+  padding: 14px 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+  appearance: none;
+  background-image: none;
+}
+
+.select:hover {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color)
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+}
+
+.selectWrapper::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 20px;
+  background: url('@/shared/assets/icons/arrow-select.svg') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+}

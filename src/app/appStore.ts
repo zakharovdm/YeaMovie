@@ -1,14 +1,13 @@
-import { moviesApi } from '@/entities/movie';
-import { configureStore } from '@reduxjs/toolkit'
+import { moviesApi, filterApi } from '@/entities/movie';
+import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './appReducer';
-import { filterApi } from '@/features/filter/api/filterApi';
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(moviesApi.middleware, filterApi.middleware),
-})
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
