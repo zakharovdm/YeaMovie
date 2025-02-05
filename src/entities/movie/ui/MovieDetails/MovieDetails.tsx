@@ -1,6 +1,9 @@
 import Image from '@/shared/ui/Image/Image';
 import styles from './styles.module.css';
 import { Movie } from '../../model/types';
+import StreamingList from '@/shared/ui/StreamingList/StreamingList';
+import MovieDescription from '../MovieDescription/MovieDescription';
+import AboutMovie from '../AboutMovie/AboutMovie';
 
 type Props = {
   data: Movie;
@@ -20,49 +23,11 @@ const MovieDetails = ({ data }: Props) => {
             image={data?.poster?.url}
             alt="Постер фильма"
           />
-          <div>
-            <p className={styles.streamingTitle}>Смотреть на:</p>
-            <ul className={styles.streamingList}>
-              {streaming && streaming.length > 0 ? (
-                streaming?.map((item) => {
-                  return (
-                    <li key={item.url}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          className={styles.logo}
-                          src={item.logo.url}
-                          alt={item.name}
-                        />
-                      </a>
-                    </li>
-                  );
-                })
-              ) : (
-                <p className={styles.noInfo}>
-                  Нет информации о видеостримингах
-                </p>
-              )}
-            </ul>
-          </div>
+          <StreamingList streaming={streaming} />
         </div>
         <div className={styles.info}>
           <div className={styles.inner}>
-            <div className={styles.headerBlock}>
-              <div className={styles.titleBlock}>
-                <h2 className={styles.title}>{data?.name}</h2>
-                <button
-                  className={`${styles.button} ${styles.buttonFavorite}`}
-                  type="button"
-                >
-                  В избранное
-                </button>
-              </div>
-              <p className={styles.description}>{data?.description}</p>
-            </div>
+            <MovieDescription item={data} />
             <div className={styles.rating}>
               <p>
                 Кинопоиск <span>{ratingKp}/10</span>
@@ -72,43 +37,7 @@ const MovieDetails = ({ data }: Props) => {
               </p>
             </div>
           </div>
-          <div className={styles.aboutMovie}>
-            <h3 className={styles.aboutMovieTitle}>О фильме</h3>
-            <ul className={styles.aboutMovieList}>
-              <li>
-                <p>Жанр:</p>
-                <p>{data?.genres.map((genre) => genre.name).join(', ')}</p>
-              </li>
-              <li>
-                <p>Страна:</p>
-                <p>
-                  {data?.countries.map((country) => country.name).join(', ')}
-                </p>
-              </li>
-              <li>
-                <p>Год:</p>
-                <p>{data?.year}</p>
-              </li>
-              <li>
-                <p>Режиссер:</p>
-                <p>
-                  {data?.persons
-                    .filter((person) => person.enProfession === 'director')
-                    .map((person) => person.name)
-                    .join(', ')}
-                </p>
-              </li>
-              <li>
-                <p>Актеры:</p>
-                <p>
-                  {data?.persons
-                    .filter((person) => person.enProfession === 'actor')
-                    .map((person) => person.name)
-                    .join(', ')}
-                </p>
-              </li>
-            </ul>
-          </div>
+          <AboutMovie item={data} />
         </div>
       </div>
     </>

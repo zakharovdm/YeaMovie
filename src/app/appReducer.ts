@@ -1,7 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import foundedMoviesReducer  from '@/entities/movie/model/moviesSlice';
-import { moviesApi } from '@/entities/movie';
-import { filterApi } from '@/features/filter/api/filterApi';
+import { moviesApi, filterApi } from '@/entities/movie';
 
 export const rootReducer = combineReducers({
   foundedMovies: foundedMoviesReducer,
