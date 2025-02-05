@@ -1,5 +1,6 @@
 import { Option } from '@/entities/movie/api/filterApi';
 import styles from './styles.module.css';
+import { renderOption } from '@/shared/helpers/renderOptions';
 
 type Props = {
   name: string,
@@ -12,35 +13,10 @@ const Dropdown = ({ name, value, data }: Props) => {
     <div className={styles.selectWrapper}>
       <select className={styles.select} name={name} id={name}>
         <option value={value}>{value}</option>
-        {data?.map((item) => {
-          switch (name) {
-            case 'genres':
-            case 'country':
-              if (typeof item === 'object') {
-                return (<option key={item.slug} value={item.name}>{item.name}</option>);
-              }
-              return null;
-            case 'year': {
-              const yearValue = typeof item === 'number' ? item : Number(item);
-              return (<option key={yearValue} value={yearValue}>{yearValue}</option>);
-            }
-            case 'rating': {
-              if (typeof item === 'number') { 
-              return (
-                <option key={item} value={`${item}-10`}>
-                  от {item}
-                </option>
-              );
-            }
-              return null;
-            }
-            default:
-              return null;
-          }
-        })}
+        {data?.map((item) => renderOption({ name, item }))}
       </select>
     </div>
-  )
+  );
 };
 
 export default Dropdown;

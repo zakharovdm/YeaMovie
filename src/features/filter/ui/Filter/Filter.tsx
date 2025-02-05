@@ -3,14 +3,15 @@ import { useGetFilterQuery } from '@/entities/movie/api/filterApi';
 import { useAppDispatch } from '@/app/appStore';
 import styles from './styles.module.css';
 import Dropdown from '@/shared/ui/Dropdown/Dropdown';
+import { generateRating, generateYears } from '@/shared/helpers/helpers';
 
 
 const Filter = () => {
   const dispatch = useAppDispatch();
   const { data: genresData } = useGetFilterQuery({ field: 'genres.name' })
   const { data: countriesData } = useGetFilterQuery({ field: 'countries.name' })
-  const years = Array.from({ length: 2024 - 1895 + 1 }, (_, i) => 2024 - i);
-  const numbers = Array.from({ length: 10 }, (_, i) => (10 - i));
+  const years = generateYears();
+  const numbers = generateRating();
 
   const onFilterChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     const { name, value } = e.target;
