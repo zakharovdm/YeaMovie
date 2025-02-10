@@ -1,5 +1,5 @@
 import { foundedMoviesSlice } from '@/entities/movie/model/moviesSlice';
-import { useGetFilterQuery } from '@/entities/movie/api/filterApi';
+import { useGetFilterQuery } from '@/entities/movie/api/moviesApi';
 import { useAppDispatch } from '@/app/appStore';
 import styles from './styles.module.css';
 import Dropdown from '@/shared/ui/Dropdown/Dropdown';

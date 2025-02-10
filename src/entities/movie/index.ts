@@ -1,5 +1,4 @@
-import { filterApi } from './api/filterApi';
-import { moviesApi } from './api/moviesApi';
+import { moviesApi, filterApi } from './api/moviesApi';
 import { Movie, MoviesApiResponse } from './model/types';
 import MovieCard from './ui/MovieCard/MovieCard';
 import SearchMovieCard from './ui/SearchMovieCard/SearchMovieCard';
