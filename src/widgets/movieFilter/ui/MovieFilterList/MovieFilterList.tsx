@@ -6,8 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Filter } from '@/features/filter';
 import { useAppSelector } from '@/app/appStore';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
-import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
-import Loader from '@/shared/ui/Loader/Loader';
+import { renderContent } from '@/shared/helpers/renderContent';
 
 const MovieFilterList = () => {
   const { year, genres, country, rating } = useAppSelector((state) => state.foundedMovies.filters);
@@ -22,6 +21,12 @@ const MovieFilterList = () => {
     'rating.kp': rating,
   });
 
+  const content = (<>{data?.docs.map((movie: Movie) => (
+    <Link to={`/details/${movie.id}`} key={movie.id}>
+      <MovieCard item={movie} />
+    </Link>
+  ))}</>
+  )
 
   return (
     <section className={styles.filter}>
@@ -33,11 +38,13 @@ const MovieFilterList = () => {
         </div>
       </div>
       <ul className={styles.list}>
-        {isLoading ? <Loader /> : error ? (<ErrorMessage error={error} />) : data?.docs.map((movie: Movie) => (
-          <Link to={`/details/${movie.id}`} key={movie.id}>
-            <MovieCard item={movie} />
-          </Link>
-        ))}
+        {renderContent({
+          isLoading,
+          error,
+          data,
+          RenderComponent: content,
+          EmptyComponent: <p>Нет фильмов по данному фильтру</p>
+        })}
       </ul>
     </section>
 
