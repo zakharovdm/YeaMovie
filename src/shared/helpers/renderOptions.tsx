@@ -1,4 +1,4 @@
-import { Option } from '@/entities/movie/api/filterApi';
+import { Option } from '@/entities/movie/api/moviesApi'
 import { capitalizeFirstLetter } from '@/shared/helpers/helpers';
 
 export type Props = {
