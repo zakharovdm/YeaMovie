@@ -2,7 +2,7 @@ import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { MOVIES_LIMIT_PREVIEW_FILTER, START_PAGE_NUMBER } from '@/shared/constants';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
-import { Filter } from '@/features/filter';
+import { Filter } from '@/features/movies-filter';
 import { useAppSelector } from '@/app/appStore';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import { renderContent } from '@/shared/helpers/renderContent';
@@ -30,15 +30,13 @@ const MovieFilterList = () => {
           <ButtonViewAll onClick={() => navigate('/view-all/filtered')} />
         </div>
       </div>
-      <ul className={styles.list}>
-        {renderContent({
-          isLoading,
-          error,
-          data,
-          RenderComponent: data ? <MovieList movies={data?.docs} /> : null,
-          EmptyComponent: <p>Нет фильмов по данному фильтру</p>
-        })}
-      </ul>
+      {renderContent({
+        isLoading,
+        error,
+        data,
+        RenderComponent: data ? <MovieList movies={data?.docs} /> : null,
+        EmptyComponent: <p>Нет фильмов по данному фильтру</p>
+      })}
     </section>
 
   );

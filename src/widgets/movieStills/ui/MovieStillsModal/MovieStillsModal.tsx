@@ -1,6 +1,6 @@
 import Modal from "@/shared/ui/Modal/Modal";
 import ImageList from "../ImageList/ImageList";
-import { GallerySlider } from "@/features/gallery";
+import { GallerySlider } from "@/features/movies-gallery";
 import { ImageMovie } from "@/entities/movie/model/types";
 
 type Image = {
