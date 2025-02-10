@@ -2,7 +2,6 @@ import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit/react";
 import Loader from "../ui/Loader/Loader";
 import ErrorMessage from "../ui/ErrorMessage/ErrorMessage";
-import { ReactElement } from "react";
 
 type Props<T> = {
   isLoading: boolean,

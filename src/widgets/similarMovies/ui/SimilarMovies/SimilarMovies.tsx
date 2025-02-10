@@ -1,4 +1,4 @@
-import MovieList from '../MovieList/MovieList';
+import MovieList from '@/entities/movie/ui/MovieList/MovieList';
 import { Movie } from '@/entities/movie';
 import styles from './styles.module.css';
 

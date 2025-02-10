@@ -1,12 +1,12 @@
 import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { MOVIES_LIMIT_PREVIEW_FILTER, START_PAGE_NUMBER } from '@/shared/constants';
-import { Movie, MovieCard } from '@/entities/movie';
 import styles from './styles.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Filter } from '@/features/filter';
 import { useAppSelector } from '@/app/appStore';
 import ButtonViewAll from '@/shared/ui/ButtonViewAll/ButtonViewAll';
 import { renderContent } from '@/shared/helpers/renderContent';
+import MovieList from '@/entities/movie/ui/MovieList/MovieList';
 
 const MovieFilterList = () => {
   const { year, genres, country, rating } = useAppSelector((state) => state.foundedMovies.filters);
@@ -20,13 +20,6 @@ const MovieFilterList = () => {
     'countries.name': country,
     'rating.kp': rating,
   });
-
-  const content = (<>{data?.docs.map((movie: Movie) => (
-    <Link to={`/details/${movie.id}`} key={movie.id}>
-      <MovieCard item={movie} />
-    </Link>
-  ))}</>
-  )
 
   return (
     <section className={styles.filter}>
@@ -42,7 +35,7 @@ const MovieFilterList = () => {
           isLoading,
           error,
           data,
-          RenderComponent: content,
+          RenderComponent: data ? <MovieList movies={data?.docs} /> : null,
           EmptyComponent: <p>Нет фильмов по данному фильтру</p>
         })}
       </ul>

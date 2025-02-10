@@ -1,4 +1,4 @@
-import MovieList from '../MovieList/MovieList';
+import MovieList from '@/entities/movie/ui/MovieList/MovieList';
 import { useGetMoviesQuery } from '@/entities/movie/api/moviesApi';
 import { MOVIES_LIMIT_PREVIEW_POPULAR_PAGE, START_PAGE_NUMBER } from '@/shared/constants';
 import { useState } from 'react';
