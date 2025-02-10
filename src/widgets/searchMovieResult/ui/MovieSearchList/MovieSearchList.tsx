@@ -6,11 +6,10 @@ import { Movie, SearchMovieCard } from '@/entities/movie';
 import styles from './styles.module.css';
 import { useAppSelector } from '@/app/appStore';
 import { Link } from 'react-router-dom';
-import ErrorMessage from '@/shared/ui/ErrorMessage/ErrorMessage';
-import Loader from '@/shared/ui/Loader/Loader';
 import { MoviesPagination } from '@/features/movies-pagination';
 import { usePagination } from '@/shared/hooks/usePagination';
 import { useEffect } from 'react';
+import { renderContent } from '@/shared/helpers/renderContent';
 
 const MovieSearchList = () => {
   const query = useAppSelector((state) => state.foundedMovies.query);
@@ -28,6 +27,14 @@ const MovieSearchList = () => {
     syncTotalPages(totalPages);
   }, [totalPages]);
 
+  const content = (<>{
+    data?.docs.map((movie: Movie) => (
+      <Link to={`/details/${movie.id}`} key={movie.id}>
+        <SearchMovieCard item={movie} />
+      </Link>
+    ))}
+  </>)
+
   return (
     <section>
       <MoviesPagination
@@ -38,13 +45,12 @@ const MovieSearchList = () => {
         onPageClick={handlePageClick}
       >
         <ul className={styles.list}>
-          {isLoading ? <Loader />
-            : error ? (<ErrorMessage error={error} />)
-              : data?.docs.map((movie: Movie) => (
-                <Link to={`/details/${movie.id}`} key={movie.id}>
-                  <SearchMovieCard item={movie} />
-                </Link>
-              ))}
+          {renderContent({ 
+            isLoading, 
+            error, 
+            data, 
+            RenderComponent: content, 
+            EmptyComponent: <p>Ничего не найдено</p> })}
         </ul>
       </MoviesPagination>
     </section>

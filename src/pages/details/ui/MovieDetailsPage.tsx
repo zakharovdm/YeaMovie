@@ -5,14 +5,19 @@ import { SimilarMovies } from "@/widgets/similarMovies";
 import { MovieStills } from "@/widgets/movieStills";
 import { useGetMovieByIdQuery } from "@/entities/movie/api/moviesApi";
 import styles from './styles.module.css';
-import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
-import Loader from "@/shared/ui/Loader/Loader";
+import { renderContent } from "@/shared/helpers/renderContent";
 
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
   const movieId = id ? parseInt(id) : null;
   const { data, isLoading, error } = useGetMovieByIdQuery({ id: movieId });
+
+  const content = data ? <>
+    <MovieDetails data={data} />
+    <MovieStills movieId={data.id.toString()} />
+    <SimilarMovies data={data?.similarMovies || []} />
+  </> : null;
 
   return (
     <main className="content-wrapper">
@@ -21,14 +26,15 @@ const MovieDetailsPage = () => {
           <NavButton title={'Главная'} />
           <NavButton title={'Назад'} />
         </nav>
-        {isLoading ? <Loader />
-        : error ? <ErrorMessage error={error} /> 
-        : data ? (
-          <>
-            <MovieDetails data={data} />
-            <MovieStills movieId={data.id.toString()} />
-            <SimilarMovies data={data?.similarMovies || []} />
-          </>) : <p>Данные о фильме отсутствуют</p>}
+        {
+          renderContent({
+            isLoading,
+            error,
+            data,
+            RenderComponent: content,
+            EmptyComponent: <p>Данные о фильме отсутствуют</p>
+          })
+        }
       </div>
     </main>
   );
