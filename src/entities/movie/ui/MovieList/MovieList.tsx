@@ -1,6 +1,7 @@
-import { Movie, MovieCard } from '@/entities/movie';
-import { Link } from 'react-router-dom';
-import styles from './styles.module.css';
+import { Link } from "react-router-dom";
+import MovieCard from "../MovieCard/MovieCard";
+import styles from "./styles.module.css";
+import { Movie } from "../../model/types";
 
 type Props = {
   movies: Movie[];
@@ -15,7 +16,7 @@ const MovieList = ({ movies }: Props) => {
         </Link>
       ))}
     </ul>
-  );
-};
+  )
+}
 
 export default MovieList;

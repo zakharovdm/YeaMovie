@@ -17,13 +17,6 @@
   background: #080423;
 }
 
-.list {
-  display: grid;
-  width: 100%;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
-}
-
 .innerButton {
   display: flex;
   justify-content: end;

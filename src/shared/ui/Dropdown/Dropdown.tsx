@@ -1,4 +1,4 @@
-import { Option } from '@/entities/movie/api/filterApi';
+import { Option } from '@/entities/movie/api/moviesApi'
 import styles from './styles.module.css';
 import { renderOption } from '@/shared/helpers/renderOptions';
 
